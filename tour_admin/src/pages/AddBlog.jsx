@@ -95,62 +95,75 @@ const AddBlog = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
-      <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 w-full max-w-lg">
-        <h1 className="text-3xl font-bold mb-6 text-center">Add Blog</h1>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900">Add Blog Post</h1>
+        <p className="mt-1 text-sm text-slate-500">Publish new articles, guides, or updates to the public blog.</p>
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 sm:p-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <div>
-            <label className="block font-medium mb-2 text-gray-800">
-              Title
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Post Title
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter photo title"
+              placeholder="e.g. 10 Best Places to Visit in Ethiopia"
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 bg-transparent"
+              className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
             />
           </div>
-          {/* description */}
+
+          {/* Description */}
           <div>
-            <label className="block font-medium mb-2 text-gray-800">
-              Description
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Post Content / Description
             </label>
-            <input
-              type="text"
+            <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter photo description"
+              placeholder="Write the main content of your blog post here..."
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 bg-transparent"
+              rows="6"
+              className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow resize-y"
             />
           </div>
 
           {/* Photo */}
           <div>
-            <label className="block font-medium mb-2 text-gray-800">
-              Upload Images
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Cover Image
             </label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setPhoto(e.target.files[0])}
-              required
-              className="w-full rounded-lg border border-gray-300 p-2 bg-transparent"
-            />
+            <label className="flex flex-col items-center justify-center w-full h-[200px] border-2 border-dashed border-slate-300 rounded-xl cursor-pointer hover:bg-slate-50 hover:border-blue-500 transition-colors bg-slate-50/50 group">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setPhoto(e.target.files[0])}
+                hidden
+                required
+              />
+              <div className="flex flex-col items-center">
+                <p className="text-slate-700 text-lg font-medium group-hover:text-blue-600 transition-colors">
+                  {photo ? photo.name : "Click to select a cover image"}
+                </p>
+              </div>
+            </label>
           </div>
 
           {/* Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition font-semibold disabled:opacity-50"
-          >
-            {loading ? "Uploading..." : "Upload"}
-          </button>
+          <div className="pt-4 border-t border-slate-100 flex items-center justify-end">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white transition-colors rounded-lg px-8 py-2.5 font-semibold shadow-sm disabled:opacity-50"
+            >
+              {loading ? "Publishing..." : "Publish Blog Post"}
+            </button>
+          </div>
         </form>
       </div>
     </div>

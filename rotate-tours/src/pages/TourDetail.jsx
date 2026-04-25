@@ -23,7 +23,7 @@ export default function TourDetail() {
       <div className="relative overflow-hidden rounded-[40px] bg-dusk text-white">
         <img src={tour.image} alt={tour.title} className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="relative z-10 space-y-6 p-10">
-          <p className="text-sm uppercase tracking-[0.4em] text-brand-200">{tour.category} • {tour.duration}</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-200">{tour.category} • {tour.duration}</p>
           <h1 className="text-4xl font-display">{tour.title}</h1>
           <p className="max-w-3xl text-lg text-white/80">{tour.description}</p>
           <div className="flex flex-wrap gap-6 text-sm">

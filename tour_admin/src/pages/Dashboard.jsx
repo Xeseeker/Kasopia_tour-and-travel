@@ -24,11 +24,11 @@ const Dashboard = () => {
   }
 
   return (
-    <>
-      <NavBar />
-      <div style={{ display: "flex", marginTop: "60px" }}>
-        <Sidebar />
-        <div style={{ flexGrow: 1, padding: "30px", marginLeft: "200px" }}>
+    <div className="min-h-screen bg-slate-50 flex">
+      <Sidebar />
+      <div className="flex-1 flex flex-col ml-64 min-w-0">
+        <NavBar />
+        <main className="flex-1 p-6 md:p-10 overflow-auto mt-16">
           <Routes>
             <Route path="/add-photo" element={<AddPhoto />} />
             <Route path="/add-certificate" element={<AddCertificate />} />
@@ -37,9 +37,9 @@ const Dashboard = () => {
             <Route path="/Gallery" element={<ViewGallery />} />
             <Route path="/change-password" element={<ChangePassword />} />
           </Routes>
-        </div>
+        </main>
       </div>
-    </>
+    </div>
   );
 };
 

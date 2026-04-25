@@ -29,7 +29,7 @@ export default function Blog() {
   if (loading) return <p className="text-center mt-10">Loading blog...</p>;
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 animate-fade-in-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
       <SectionTitle
         eyebrow="Journal"
         title="Dispatches from our field team"

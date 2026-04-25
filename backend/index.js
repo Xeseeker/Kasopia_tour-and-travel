@@ -19,7 +19,7 @@ connectCloudinary();
 // app.use(cors());
 app.use(
   cors({
-    origin: ["https://kasopiatour.com", "http://localhost:5173"],
+    origin: ["https://kasopiatour.com", "http://localhost:5173", "http://localhost:5174"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

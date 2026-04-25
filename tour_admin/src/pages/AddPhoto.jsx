@@ -5,54 +5,59 @@ export default function AddPhoto() {
   const [title, setTitle] = useState("");
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-200 mb-8">Add Photo</h1>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900">Add Photo</h1>
+        <p className="mt-1 text-sm text-slate-500">Upload a new photograph to the global gallery.</p>
+      </div>
 
-      <div className="bg-[#111827] border border-[#1F2937] rounded-2xl p-8">
-        {/* Title */}
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Title
-        </label>
-
-        <input
-          type="text"
-          placeholder="Enter a descriptive title for your photo"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full mb-8 bg-[#0B0F14] border border-[#1F2937] text-gray-200 placeholder-gray-500 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        {/* Upload */}
-        <p className="text-sm font-medium text-gray-300 mb-3">Upload Photo</p>
-
-        <label className="flex flex-col items-center justify-center w-full h-[320px] border-2 border-dashed border-[#1F2937] rounded-2xl cursor-pointer hover:border-blue-500 transition bg-[#0B0F14]/40">
-          <input type="file" hidden />
-
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-[#1E293B] flex items-center justify-center mb-4">
-              <Upload className="text-gray-300" size={26} />
-            </div>
-
-            <p className="text-gray-200 text-lg font-medium">
-              Click to upload or drag & drop
-            </p>
-
-            <p className="text-gray-500 text-sm mt-1">
-              PNG, JPG, GIF up to 10MB
-            </p>
+      <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 sm:p-8">
+        <div className="space-y-6">
+          {/* Title */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Photo Title
+            </label>
+            <input
+              type="text"
+              placeholder="Enter a descriptive title for your photo"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
+            />
           </div>
-        </label>
 
-        {/* Actions */}
-        <div className="flex items-center gap-6 mt-8">
-          <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition text-white px-6 py-3 rounded-xl font-medium">
-            <Upload size={18} />
-            Upload Photo
-          </button>
+          {/* Upload Area */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Upload Image
+            </label>
+            <label className="flex flex-col items-center justify-center w-full h-[280px] border-2 border-dashed border-slate-300 rounded-xl cursor-pointer hover:bg-slate-50 hover:border-blue-500 transition-colors bg-slate-50/50 group">
+              <input type="file" hidden />
+              <div className="flex flex-col items-center">
+                <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Upload size={24} />
+                </div>
+                <p className="text-slate-700 text-lg font-medium group-hover:text-blue-600 transition-colors">
+                  Click to upload or drag & drop
+                </p>
+                <p className="text-slate-500 text-sm mt-1">
+                  PNG, JPG, WEBP up to 10MB
+                </p>
+              </div>
+            </label>
+          </div>
 
-          <button className="text-gray-400 hover:text-gray-200 transition">
-            Cancel
-          </button>
+          {/* Actions */}
+          <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
+            <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-colors shadow-sm">
+              <Upload size={18} />
+              Save Photo
+            </button>
+            <button className="text-slate-600 hover:text-slate-900 font-medium px-4 py-2.5 transition-colors">
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

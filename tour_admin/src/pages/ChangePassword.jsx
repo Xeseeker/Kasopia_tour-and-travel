@@ -46,54 +46,58 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-10">
-      <div className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl w-full max-w-md">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          Change Password
-        </h2>
+    <div className="max-w-xl mx-auto space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900">Security Settings</h1>
+        <p className="mt-1 text-sm text-slate-500">Update your account password.</p>
+      </div>
+
+      <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 sm:p-8">
         {message && (
-          <p className="mb-4 text-center text-red-500 font-medium">{message}</p>
+          <div className="mb-6 bg-red-50 text-red-600 border border-red-200 p-4 rounded-lg font-medium text-sm">
+            {message}
+          </div>
         )}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block mb-2 font-medium">Current Password</label>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Current Password</label>
             <input
               type="password"
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
             />
           </div>
           <div>
-            <label className="block mb-2 font-medium">New Password</label>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">New Password</label>
             <input
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
             />
           </div>
           <div>
-            <label className="block mb-2 font-medium">
-              Confirm New Password
-            </label>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">Confirm New Password</label>
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
             />
           </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition font-semibold"
-          >
-            {loading ? "Updating..." : "Change Password"}
-          </button>
+          <div className="pt-4 border-t border-slate-100 flex items-center justify-end">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white transition-colors rounded-lg px-8 py-2.5 font-semibold shadow-sm disabled:opacity-50"
+            >
+              {loading ? "Updating..." : "Change Password"}
+            </button>
+          </div>
         </form>
       </div>
     </div>

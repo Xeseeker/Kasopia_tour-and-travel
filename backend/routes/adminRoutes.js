@@ -9,6 +9,8 @@ import {
   deleteBlog,
   addBlog,
   changePassword,
+  editPhoto,
+  editBlog,
 } from "../controller/adminController.js";
 const adminRoutes = express.Router();
 
@@ -20,5 +22,8 @@ adminRoutes.get("/fetchPhoto", authAdmin, fetchPhoto);
 adminRoutes.get("/fetchBlog", authAdmin, fetchBlog);
 adminRoutes.delete("/deleteBlog/:id", authAdmin, deleteBlog);
 adminRoutes.post("/changePassword", authAdmin, changePassword);
+
+adminRoutes.put("/editPhoto/:id", authAdmin, editPhoto);
+adminRoutes.put("/editBlog/:id", authAdmin, editBlog);
 
 export default adminRoutes;

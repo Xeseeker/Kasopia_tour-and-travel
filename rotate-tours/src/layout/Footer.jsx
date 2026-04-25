@@ -86,7 +86,7 @@ export default function Footer() {
   <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 space-y-12">
     <div className="grid gap-10 md:grid-cols-4">
       <div className="md:col-span-2 space-y-4">
-        <p className="text-xs uppercase tracking-[0.4em] text-brand-300">
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-300">
           Kasopia tour and Travel
         </p>
         <h3 className="text-3xl font-display">
@@ -99,7 +99,7 @@ export default function Footer() {
 
       {footerLinks.map((section) => (
         <div key={section.title} className="space-y-3">
-          <h4 className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-200">
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-200">
             {section.title}
           </h4>
           <ul className="space-y-2">
@@ -136,7 +136,7 @@ export default function Footer() {
       <div className="flex flex-col gap-2 text-sm">
         <label
           htmlFor="language-selector"
-          className="uppercase tracking-[0.2em] text-brand-200"
+          className="font-semibold uppercase tracking-wider text-brand-200"
         >
           Language
         </label>

@@ -1,96 +1,52 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { ImagePlus, Award, PenTool, LayoutList, ImageIcon, Settings } from "lucide-react";
 
 const SideBar = () => {
+  const links = [
+    { to: "/admin/add-photo", label: "Add Photo", icon: ImagePlus },
+    { to: "/admin/add-certificate", label: "Add Certificate", icon: Award },
+    { to: "/admin/add-Blog", label: "Add Blog", icon: PenTool },
+    { to: "/admin/Blogs", label: "View Blogs", icon: LayoutList },
+    { to: "/admin/Gallery", label: "View Gallery", icon: ImageIcon },
+    { to: "/admin/change-password", label: "Settings", icon: Settings },
+  ];
+
   return (
-    <div
-      style={{
-        width: "220px",
-        height: "100vh",
-        background: "#1e293b",
-        color: "white",
-        padding: "20px",
-        position: "fixed",
-      }}
-    >
-      <nav style={{ marginTop: "30px" }}>
-        <Link to="/admin/add-photo" style={styles.link}>
-          Add Photo
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-10 h-10 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 16.5V7a2 2 0 012-2h3l1.2-1.8A2 2 0 0111.2 2h1.6a2 2 0 011.6.8L15.6 5H19a2 2 0 012 2v9.5a2 2 0 01-2 2H5a2 2 0 01-2-2z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 14l4-4a1.5 1.5 0 012.1 0l3 3 1-1a1.5 1.5 0 012.1 0L21 7"
-            />
-          </svg>
-        </Link>
-        <br />
-        <Link to="/admin/add-certificate" style={styles.link}>
-          Add Certificate
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-10 h-10 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 16.5V7a2 2 0 012-2h3l1.2-1.8A2 2 0 0111.2 2h1.6a2 2 0 011.6.8L15.6 5H19a2 2 0 012 2v9.5a2 2 0 01-2 2H5a2 2 0 01-2-2z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 14l4-4a1.5 1.5 0 012.1 0l3 3 1-1a1.5 1.5 0 012.1 0L21 7"
-            />
-          </svg>
-        </Link>
-        <br />
-        <Link to="/admin/add-Blog" style={styles.link}>
-          Add Blog
-        </Link>
+    <aside className="w-64 h-screen fixed inset-y-0 left-0 bg-slate-900 text-slate-300 flex flex-col z-40 border-r border-slate-800">
+      <div className="h-16 flex items-center px-6 border-b border-slate-800">
+        <h2 className="text-xl font-bold font-display text-white tracking-wide">Kasopia Admin</h2>
+      </div>
 
-        <br />
-        <Link to="/admin/Blogs" style={styles.link}>
-          Blogs
-        </Link>
-
-        <br />
-        <Link to="/admin/Gallery" style={styles.link}>
-          Gallery
-        </Link>
-
-        <br />
-        <Link to="/admin/change-password" style={styles.link}>
-          Change Password
-        </Link>
-        <br />
+      <nav className="flex-1 py-6 px-4 space-y-1 overflow-y-auto">
+        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-2">Menu</div>
+        {links.map((link) => {
+          const Icon = link.icon;
+          return (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium ${
+                  isActive
+                    ? "bg-blue-600 text-white"
+                    : "hover:bg-slate-800 hover:text-white"
+                }`
+              }
+            >
+              <Icon className="w-5 h-5" />
+              {link.label}
+            </NavLink>
+          );
+        })}
       </nav>
-    </div>
+      
+      <div className="p-4 border-t border-slate-800">
+        <div className="px-3 py-2 rounded-lg bg-slate-800/50 flex flex-col items-center text-xs text-slate-400">
+          <p>Logged in securely</p>
+        </div>
+      </div>
+    </aside>
   );
-};
-
-const styles = {
-  link: {
-    display: "block",
-    color: "white",
-    margin: "12px 0",
-    textDecoration: "none",
-    fontSize: "18px",
-  },
 };
 
 export default SideBar;

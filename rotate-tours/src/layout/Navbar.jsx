@@ -57,7 +57,7 @@ export default function Navbar() {
     `text-sm font-semibold tracking-wide transition-colors ${isActive ? 'text-blue-500' : 'text-slate-600 hover:text-brand-500'} `;
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 transition-all  bg-[#0f0f0f]`}>
+    <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${isScrolled ? 'glass-panel !border-none !rounded-none' : 'bg-[#0f0f0f]'}`}>
       {/* Top Bar with Contact Info and Social Media */}
       <div 
         className={`transition-all duration-300 bg-[#0f0f0f] text-white border-b border-slate-700 ${
@@ -107,20 +107,18 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className={`transition-all backdrop-blur bg-[#0f0f0f]`}>
+      <div className={`transition-all duration-500`}>
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="Logo" className="h-12 w-12 rounded-2xl object-cover" />
           <div>
-            
-            <p className="text-xs uppercase tracking-[0.4em] text-blue-500">Kasopia tour Ethiopia </p>
-            
+            <p className={`text-xs font-semibold uppercase tracking-widest ${isScrolled ? 'text-blue-700' : 'text-slate-300'}`}>Kasopia tour Ethiopia </p>
           </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <NavLink key={link.to} to={link.to} className={linkClasses} onClick={() => setIsOpen(false)}>
+            <NavLink key={link.to} to={link.to} className={({ isActive }) => `text-sm font-semibold tracking-wide transition-colors ${isActive ? 'text-blue-600' : (isScrolled ? 'text-slate-800 hover:text-blue-700' : 'text-slate-200 hover:text-white')}`} onClick={() => setIsOpen(false)}>
               {link.label}
             </NavLink>
           ))}
@@ -129,7 +127,7 @@ export default function Navbar() {
           <div className="relative" ref={dropdownRef}>
             <button
               className={`text-sm font-semibold tracking-wide transition-colors flex items-center gap-1 ${
-                isToursDropdownOpen ? 'text-brand-500' : 'text-slate-600 hover:text-brand-500'
+                isToursDropdownOpen ? (isScrolled ? 'text-blue-700' : 'text-blue-400') : (isScrolled ? 'text-slate-800 hover:text-blue-700' : 'text-slate-200 hover:text-white')
               }`}
               onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
               onMouseEnter={() => setIsToursDropdownOpen(true)}

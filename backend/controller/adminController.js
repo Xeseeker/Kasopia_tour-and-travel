@@ -340,6 +340,69 @@ const deleteBlog = async (req, res) => {
   }
 };
 
+const editPhoto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title } = req.body;
+    
+    if (!id) return res.status(400).json({ message: "Photo ID required" });
+
+    let imageUrl = null;
+
+    if (req.files && req.files.photo) {
+      const photo = req.files.photo;
+      const result = await cloudinary.uploader.upload(photo.tempFilePath, {
+        folder: "tour_gallery",
+        resource_type: "image",
+      });
+      imageUrl = result.secure_url;
+    }
+
+    // Get current image_url if not updating image, so we can return it
+    if (imageUrl) {
+      await db.query("UPDATE gallery SET title = ?, image_url = ? WHERE id = ?", [title, imageUrl, id]);
+    } else {
+      await db.query("UPDATE gallery SET title = ? WHERE id = ?", [title, id]);
+    }
+
+    res.json({ success: true, message: "Photo updated successfully", imageUrl });
+  } catch (error) {
+    console.error("Edit photo error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+const editBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    
+    if (!id) return res.status(400).json({ message: "Blog ID required" });
+
+    let imageUrl = null;
+
+    if (req.files && req.files.photo) {
+      const photo = req.files.photo;
+      const result = await cloudinary.uploader.upload(photo.tempFilePath, {
+        folder: "tour_blog",
+        resource_type: "image",
+      });
+      imageUrl = result.secure_url;
+    }
+
+    if (imageUrl) {
+      await db.query("UPDATE blog SET title = ?, description = ?, image_url = ? WHERE id = ?", [title, description, imageUrl, id]);
+    } else {
+      await db.query("UPDATE blog SET title = ?, description = ? WHERE id = ?", [title, description, id]);
+    }
+
+    res.json({ success: true, message: "Blog updated successfully", imageUrl });
+  } catch (error) {
+    console.error("Edit blog error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 export {
   addCertificate,
   addPhoto,
@@ -349,4 +412,6 @@ export {
   fetchBlog,
   deleteBlog,
   changePassword,
+  editPhoto,
+  editBlog,
 };

@@ -27,11 +27,13 @@ export default function BlogDetail() {
 
   return (
     <article className="space-y-8">
-      <img
-        src={post.image_url}
-        alt={post.title}
-        className="h-96 w-full rounded-[32px] object-cover"
-      />
+      <div className="h-96 w-full rounded-[32px] bg-slate-100 relative overflow-hidden flex items-center justify-center p-2">
+        <img
+          src={post.image_url}
+          alt={post.title}
+          className="max-h-full w-auto object-contain rounded-2xl shadow-sm"
+        />
+      </div>
       <SectionTitle eyebrow="Journal" title={post.title} />
       <p className="text-lg leading-relaxed text-slate-700">
         {post.description}

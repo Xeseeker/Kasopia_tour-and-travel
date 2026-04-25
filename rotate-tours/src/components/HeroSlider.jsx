@@ -37,12 +37,12 @@ export default function HeroSlider({ slides = [] }) {
               className="group relative block h-full w-full overflow-hidden rounded-[20px] bg-hero-gradient shadow-soft"
             >
               <img src={slide.image} alt={slide.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/10" />
               <div className="relative z-10 flex h-full flex-col justify-center px-6 py-10 sm:px-14 max-w-3xl">
-                <p className="text-xs uppercase tracking-[0.6em] text-brand-200/90">{slide.eyebrow}</p>
-                <h1 className="mt-4 text-4xl sm:text-5xl xl:text-6xl font-display leading-tight">{slide.title}</h1>
-                <p className="mt-5 text-base sm:text-lg text-white/85">{slide.copy}</p>
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="glass-panel p-8 sm:p-12 rounded-3xl animate-fade-in-up">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#e2e8f0] opacity-90">{slide.eyebrow}</p>
+                  <h1 className="mt-4 text-4xl sm:text-5xl xl:text-6xl font-display leading-tight text-white drop-shadow-md">{slide.title}</h1>
+                  <p className="mt-5 text-base sm:text-lg text-white/90 drop-shadow-sm font-medium">{slide.copy}</p>
+                  <div className="mt-8 flex flex-wrap gap-4">
                   {slide.primaryCta && (
                     <Button
                       as={slide.primaryCta.to ? Link : 'a'}
@@ -65,6 +65,7 @@ export default function HeroSlider({ slides = [] }) {
                       {slide.secondaryCta.label}
                     </Button>
                   )}
+                  </div>
                 </div>
               </div>
             </Link>

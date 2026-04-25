@@ -91,12 +91,12 @@ export default function Home() {
 
   return (
     <div className="space-y-24 ">
-      <div className={`${fullBleed} bg-black/50`}>
+      <div className={`${fullBleed}`}>
         <HeroSlider slides={heroSlides} />
       </div>
 
       <div className={fullBleed}>
-        <section className="space-y-8 py-12">
+        <section className="space-y-8 py-12 animate-fade-in-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
           <div className="text-center space-y-6 max-w-4xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-display text-dusk">
               {" "}
@@ -137,11 +137,13 @@ export default function Home() {
 
       <div className={`${fullBleed} relative `}>
         <div
-          className="absolute inset-0 bg-cover bg-center blur-md"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgImage})` }}
-        ></div>
-        <div className="relative z-10">
-          <section className="space-y-12">
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative z-10 py-12">
+          <section className="space-y-12 animate-fade-in-up" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
             <SectionTitle
               eyebrow="Top Popular Ethiopia Tours"
               title="North to South, Danakil to the East"
@@ -156,7 +158,7 @@ export default function Home() {
                   <div className="p-8 pb-6">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div>
-                        <p className="text-lg uppercase tracking-[0.4em] text-blue-800">
+                        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
                           {category.name}
                         </p>
                         <p className="mt-2 text-base text-slate-600">

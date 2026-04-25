@@ -95,7 +95,7 @@ export default function TourPackageDetail() {
   return (
     <div className="space-y-12">
       <div className="space-y-6">
-        <p className="text-sm uppercase tracking-[0.3em] text-brand-500">{category.name}</p>
+        <p className="text-sm font-semibold uppercase tracking-wider text-brand-500">{category.name}</p>
         <h1 className="text-4xl md:text-5xl font-display text-dusk">{tour.title}</h1>
         <div className="flex flex-wrap gap-3 text-sm text-slate-500">
           <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 font-semibold text-dusk">

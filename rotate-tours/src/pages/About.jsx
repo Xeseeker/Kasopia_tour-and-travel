@@ -68,7 +68,7 @@ export default function About() {
         <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 p-12 sm:p-16 text-center space-y-6 shadow-soft">
           <div className="flex flex-col items-center gap-6">
             {/* Logo Image */}
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-4 border-white/30 shadow-lg overflow-hidden">
+            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full flex items-center justify-center overflow-hidden bg-white shadow-lg">
               {!logoError ? (
                 <img 
                  src={logo}

@@ -29,30 +29,30 @@ export default function TourPackageCard({ tour, category }) {
   const imageSrc = tourPackageImages[tour.slug] || fallbackCategoryImages[category?.id] || 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80';
 
   return (
-    <div className="group relative overflow-hidden">
-      <div className="relative h-[300px] md:h-[350px] w-full">
+    <div className="group relative overflow-hidden rounded-3xl shadow-lg isolate">
+      <div className="relative h-[300px] md:h-[350px] w-full bg-slate-900 border border-slate-200">
         <img
           src={imageSrc}
           alt={tour.title}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-0" />
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
         
         {/* Book Now Button - appears on hover */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
           <Link
             to={detailPath}
-            className="inline-flex items-center justify-center rounded-lg bg-blue-500 px-8 py-3 font-semibold text-white transition-all hover:bg-blue-700 hover:scale-105 shadow-lg"
+            className="inline-flex glass-panel !bg-white/80 items-center justify-center rounded-lg px-8 py-3 font-bold text-blue-800 transition-all hover:bg-white hover:scale-105 shadow-2xl"
           >
             Book Now
           </Link>
         </div>
 
-        {/* Tour info overlay at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-          <h3 className="text-xl font-display text-white">{tour.title}</h3>
-          <p className="mt-2 text-sm text-white/90">{tour.duration}</p>
+        {/* Floating Tour info overlay */}
+        <div className="absolute bottom-4 left-4 right-4 glass-panel p-5 rounded-2xl border-white/20 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 z-10">
+          <h3 className="text-xl font-display text-white drop-shadow-md leading-tight">{tour.title}</h3>
+          <p className="mt-1 text-sm font-semibold text-white/90">{tour.duration}</p>
         </div>
       </div>
     </div>
