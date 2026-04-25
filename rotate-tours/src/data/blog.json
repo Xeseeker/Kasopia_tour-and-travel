@@ -1,0 +1,38 @@
+[
+  {
+    "id": "blog-001",
+    "slug": "designing-intentional-ethiopian-journeys",
+    "title": "Designing Intentional Ethiopian Journeys",
+    "excerpt": "How we pair community partnerships, elevated service, and slow travel principles to create journeys that give back.",
+    "author": "Leuel Habte",
+    "date": "Nov 05, 2025",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=80",
+    "tags": ["Impact", "Itinerary Design"],
+    "content": "We start every itinerary by listening—meeting local partners, mapping seasonality, and co-creating experiences that leave destinations better than we found them. From Axum's archaeological custodians to the surfacing coffee collectives in Sidamo, our team invests in relationships that welcome travelers behind the scenes."
+  },
+  {
+    "id": "blog-002",
+    "slug": "where-to-travel-in-ethiopia-2026",
+    "title": "Where to Travel in Ethiopia 2026",
+    "excerpt": "A month-by-month look at the most cinematic regions, festivals, and wildlife moments for next year's explorers.",
+    "author": "Helina Zerfu",
+    "date": "Oct 18, 2025",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80",
+    "tags": ["Seasonality", "Planning"],
+    "content": "From the iridescent Danakil to the emerald Bale Highlands, Ethiopia's landscapes shapeshift beautifully with each season. January summons Genna's spiritual vibrance in Lalibela, while May ushers in coffee blossom walks in Kaffa. Use this guide to sync your travel window with the country's most meaningful spectacles."
+  },
+  {
+    "id": "blog-003",
+    "slug": "chef-led-taste-of-addis",
+    "title": "A Chef-Led Taste of Addis Ababa",
+    "excerpt": "Spend 48 hours tasting modern Ethiopian cuisine with chef Tesfanesh Fenta as she opens her little black book.",
+    "author": "Tesfanesh Fenta",
+    "date": "Sep 21, 2025",
+    "readTime": "5 min read",
+    "image": "https://images.unsplash.com/photo-1459257868276-5e65389e2722?auto=format&fit=crop&w=1400&q=80",
+    "tags": ["Food", "City Guides"],
+    "content": "Addis Ababa's culinary scene hums with third-wave coffee bars, injera ateliers, and Afro-futurist cocktail dens. Follow this chef's trail for rooftop tastings, artisan markets, and a collaborative supper club with the city's rising talents."
+  }
+]

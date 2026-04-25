@@ -1,0 +1,214 @@
+{
+  "categories": [
+    {
+      "id": "addis-ababa",
+      "slug": "addis-ababa-its-surroundings",
+      "name": "Addis Ababa & Its Surroundings",
+      "folder": "Addis Abeba Tand souraunding ours",
+      "tours": [
+        {
+          "id": "addis-001",
+          "slug": "adadi-maryam-rock-hewn-churches-tiya-stelae",
+          "title": "Adadi Maryam Rock Hewn Churches and Tiya Stelae Archeological Sites",
+          "file": "Adadi Maryam Rock Hewan Churches and Tiya Stelae Archeological Sites.docx",
+          "duration": "Day Trip"
+        },
+        {
+          "id": "addis-002",
+          "slug": "addis-ababa-full-day-city-tours",
+          "title": "Addis Ababa Full Day City Tours",
+          "file": "Addis Ababa Full Day City Tours.docx",
+          "duration": "Full Day"
+        },
+        {
+          "id": "addis-003",
+          "slug": "awash-national-park",
+          "title": "Awash National Park",
+          "file": "Awash National Park .docx",
+          "duration": "Day Trip"
+        },
+        {
+          "id": "addis-004",
+          "slug": "debre-zeit",
+          "title": "Debre Zeit",
+          "file": "Debre Zeit .docx",
+          "duration": "Day Trip"
+        },
+        {
+          "id": "addis-005",
+          "slug": "debrelibanos-monastery",
+          "title": "Debrelibanos Monastery",
+          "file": "Debrelibanos Monastrey.docx",
+          "duration": "Day Trip"
+        },
+        {
+          "id": "addis-006",
+          "slug": "menagesha-suba-forest",
+          "title": "Menagesha Suba Forest",
+          "file": "Menagesha Suba Forest .docx",
+          "duration": "Day Trip"
+        },
+        {
+          "id": "addis-007",
+          "slug": "wenchi-crater-lake",
+          "title": "Wenchi Crater Lake",
+          "file": "Wenchi Creater Lake .docx",
+          "duration": "Day Trip"
+        }
+      ]
+    },
+    {
+      "id": "northern-ethiopia",
+      "slug": "northern-ethiopia-tours",
+      "name": "Northern Ethiopia Tours",
+      "folder": "North Ethiopia Tours",
+      "tours": [
+        {
+          "id": "north-001",
+          "slug": "06-days-northern-ethiopia-tours",
+          "title": "06 Days Northern Ethiopia Tours",
+          "file": "06 Days Northern Ethiopia Tours.docx",
+          "duration": "6 Days"
+        },
+        {
+          "id": "north-002",
+          "slug": "07-days-northern-ethiopia-tours",
+          "title": "07 Days Northern Ethiopia Tours",
+          "file": "07 Days Northern Ethiopia Tours.docx",
+          "duration": "7 Days"
+        },
+        {
+          "id": "north-003",
+          "slug": "10-days-northern-ethiopia-tours",
+          "title": "10 Days Northern Ethiopia Tours",
+          "file": "10 Days Northern Ethiopia Tours.docx",
+          "duration": "10 Days"
+        },
+        {
+          "id": "north-004",
+          "slug": "15-days-northern-tours",
+          "title": "15 Days Northern Tours",
+          "file": "15 Day Northe Tours.docx",
+          "duration": "15 Days"
+        },
+        {
+          "id": "north-005",
+          "slug": "17-days-north-and-harar-tours",
+          "title": "17 Days North and Harar Tours",
+          "file": "17 Days North and Harar Tours.docx",
+          "duration": "17 Days"
+        }
+      ]
+    },
+    {
+      "id": "southern-ethiopia",
+      "slug": "southern-ethiopia-tours",
+      "name": "Southern Ethiopia Tours",
+      "folder": "Southern Ethiopia Tours",
+      "tours": [
+        {
+          "id": "south-001",
+          "slug": "03-days-omo-valley-cultural-tours",
+          "title": "03 Days Omo Valley Cultural Tours",
+          "file": "03 Days Omo Vally Cultural Tours.docx",
+          "duration": "3 Days"
+        },
+        {
+          "id": "south-002",
+          "slug": "06-days-omo-valley-tours",
+          "title": "06 Days Omo Valley Tours",
+          "file": "06 Days Omo Vally Tours.docx",
+          "duration": "6 Days"
+        },
+        {
+          "id": "south-003",
+          "slug": "12-days-southern-ethiopia-tours",
+          "title": "12 Days Southern Ethiopia Tours",
+          "file": "12 Days Southern Ethiopia Tours.docx",
+          "duration": "12 Days"
+        }
+      ]
+    },
+    {
+      "id": "eastern-ethiopia",
+      "slug": "eastern-ethiopia-tours",
+      "name": "Eastern Ethiopia Tours",
+      "folder": "Eastern Ethiopia Tours",
+      "tours": [
+        {
+          "id": "east-001",
+          "slug": "04-days-bale-mountains-tours",
+          "title": "04 Days Bale Mountains Tours",
+          "file": "04 Days Bale Mountains Tours.docx",
+          "duration": "4 Days"
+        },
+        {
+          "id": "east-002",
+          "slug": "05-days-harar-tours",
+          "title": "05 Days Harar Tours",
+          "file": "05 Days Harar Tours.docx",
+          "duration": "5 Days"
+        }
+      ]
+    },
+    {
+      "id": "danakil-depression",
+      "slug": "danakil-depression-tours",
+      "name": "Danakil Depression Tours",
+      "folder": "Danakil Depression Tours",
+      "tours": [
+        {
+          "id": "danakil-001",
+          "slug": "3-days-danakil-depression-tours",
+          "title": "3 Days Danakil Depression Tours",
+          "file": "3 Days Danakil Depression Tours .docx",
+          "duration": "3 Days"
+        },
+        {
+          "id": "danakil-002",
+          "slug": "07-days-danakil-depression-tours",
+          "title": "07 Days Danakil Depression Tours",
+          "file": "07 Days Danakil Depression Tours.docx",
+          "duration": "7 Days"
+        }
+      ]
+    },
+    {
+      "id": "combined-tours",
+      "slug": "combination-tours",
+      "name": "Combination Tours",
+      "folder": "Combined Tours",
+      "tours": [
+        {
+          "id": "combined-001",
+          "slug": "08-days-omo-valley-danakil-depression-tours",
+          "title": "08 Days Omo Valley & Danakil Depression Tours",
+          "file": "08 Days Omo Vally & Danakil Depression Tours.docx",
+          "duration": "8 Days"
+        },
+        {
+          "id": "combined-002",
+          "slug": "14-days-northern-historic-route-omo-valley-tours",
+          "title": "14 Days Northern Historic Route and Omo Valley Tours",
+          "file": "14 Days Northern Historic Route and Omo Vally Tours .docx",
+          "duration": "14 Days"
+        },
+        {
+          "id": "combined-003",
+          "slug": "18-days-north-south-ethiopia-tours",
+          "title": "18 Days North & South Ethiopia Tours",
+          "file": "18 Day North & Southe Ethiopia Tours.docx",
+          "duration": "18 Days"
+        },
+        {
+          "id": "combined-004",
+          "slug": "6-days-danakil-tigray-church-tours",
+          "title": "6 Days Danakil and Tigray Church Tours",
+          "file": "6 Dyas Danakil and Tigiray Church Tours .docx",
+          "duration": "6 Days"
+        }
+      ]
+    }
+  ]
+}
+
