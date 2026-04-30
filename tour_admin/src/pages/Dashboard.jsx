@@ -8,6 +8,7 @@ import AddBlog from "./AddBlog";
 import ViewBlog from "./ViewBlog";
 import ViewGallery from "./ViewGallery";
 import ChangePassword from "./ChangePassword";
+import AdminTestimonials from "./AdminTestimonials";
 
 const Dashboard = () => {
   const token = localStorage.getItem("token");
@@ -35,6 +36,7 @@ const Dashboard = () => {
             <Route path="/add-Blog" element={<AddBlog />} />
             <Route path="/Blogs" element={<ViewBlog />} />
             <Route path="/Gallery" element={<ViewGallery />} />
+            <Route path="/testimonials" element={<AdminTestimonials />} />
             <Route path="/change-password" element={<ChangePassword />} />
           </Routes>
         </main>

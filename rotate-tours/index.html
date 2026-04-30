@@ -3,24 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
     <meta
       name="description"
-      content="Kasopia Ethiopia Tours — boutique Ethiopian travel company crafting elevated cultural, adventure, and bespoke journeys."
+      content="Kasopia Tour & Travel creates cultural, adventure, and tailor-made Ethiopia journeys across Lalibela, Simien, Danakil, Axum, and beyond."
     />
+    <link rel="canonical" href="https://kasopiatour.com/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <title>Kasopia Tour and Adventure</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <title>Kasopia Tour & Travel | Explore Ethiopia</title>
   </head>
   <body class="bg-[#f9f9f6]">
     <div id="root"></div>
     <div id="google_translate_element" class="hidden"></div>
     <script>
-      // Restore saved language preference
       function restoreLanguage() {
         const savedLang = localStorage.getItem('googleTranslateLanguage');
         if (savedLang && savedLang !== 'en') {
@@ -43,24 +45,20 @@
           },
           'google_translate_element'
         );
-        
-        // Restore language after initialization
+
         setTimeout(restoreLanguage, 1000);
-        
-        // Monitor language changes and save preference
+
         setTimeout(() => {
           const combo = document.querySelector('select.goog-te-combo');
           if (combo) {
-            // Save language when changed
-            combo.addEventListener('change', function() {
+            combo.addEventListener('change', function () {
               if (this.value && this.value !== 'en') {
                 localStorage.setItem('googleTranslateLanguage', this.value);
               } else {
                 localStorage.removeItem('googleTranslateLanguage');
               }
             });
-            
-            // Periodically check and restore if changed back to Amharic
+
             setInterval(() => {
               const savedLang = localStorage.getItem('googleTranslateLanguage');
               if (savedLang && savedLang !== 'en' && combo.value !== savedLang) {
@@ -79,7 +77,6 @@
         if (!combo) return;
         combo.value = lang;
         combo.dispatchEvent(new Event('change'));
-        // Save the language preference
         if (lang && lang !== 'en') {
           localStorage.setItem('googleTranslateLanguage', lang);
         } else {
@@ -87,7 +84,7 @@
         }
       };
     </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

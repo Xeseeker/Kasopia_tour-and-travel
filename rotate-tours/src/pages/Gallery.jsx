@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SectionTitle from "../components/SectionTitle.jsx";
+import SEO from "../components/SEO.jsx";
 
 export default function Gallery() {
   const [galleryImages, setGalleryImages] = useState([]);
@@ -41,11 +42,18 @@ export default function Gallery() {
   if (loading) return <p className="text-center mt-10">Loading gallery...</p>;
 
   return (
+    <>
+      <SEO
+        title="Travel Gallery"
+        description="View Kasopia Tour & Travel photography from journeys across Ethiopia, including cultural sites, landscapes, and guided expeditions."
+        path="/gallery"
+      />
     <div className="space-y-12 animate-fade-in-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
       <SectionTitle
         eyebrow="Gallery"
         title="Scenes from the road"
         description="A living scrapbook from our guides, photographers, and travelers."
+        titleAs="h1"
       />
       <div className="grid gap-4 md:grid-cols-3">
         {galleryImages.map((item, index) => (
@@ -58,6 +66,7 @@ export default function Gallery() {
               src={item.image_url}
               alt={item.name || item.title || "Gallery Image"}
               className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
             />
             <figcaption className="p-4 glass-panel border-x-0 border-b-0 border-t-white/30 text-sm font-semibold text-slate-800 bg-white/40">
               {item.name || item.title || "Gallery Moment"}
@@ -111,5 +120,6 @@ export default function Gallery() {
         </div>
       )}
     </div>
+    </>
   );
 }

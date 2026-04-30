@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SectionTitle from "../components/SectionTitle.jsx";
 import BlogCard from "../components/BlogCard.jsx";
+import SEO from "../components/SEO.jsx";
 // import posts from "../data/blog.json";
 
 export default function Blog() {
@@ -29,11 +30,18 @@ export default function Blog() {
   if (loading) return <p className="text-center mt-10">Loading blog...</p>;
 
   return (
+    <>
+      <SEO
+        title="Travel Blog"
+        description="Read Ethiopia travel stories, planning insights, and cultural notes from the Kasopia Tour & Travel team."
+        path="/blog"
+      />
     <div className="space-y-12 animate-fade-in-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
       <SectionTitle
         eyebrow="Journal"
         title="Dispatches from our field team"
         description="Trip-planning advice, cultural context, and personal essays from our guides."
+        titleAs="h1"
       />
       <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {blog.map((post) => (
@@ -41,5 +49,6 @@ export default function Blog() {
         ))}
       </div>
     </div>
+    </>
   );
 }

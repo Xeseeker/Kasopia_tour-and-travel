@@ -7,6 +7,9 @@ import TourCard from "../components/TourCard.jsx";
 import BlogCard from "../components/BlogCard.jsx";
 import Button from "../components/Button.jsx";
 import TourPackageCard from "../components/TourPackageCard.jsx";
+import CertificateSlider from "../components/CertificateSlider.jsx";
+import Testimonials from "../components/Testimonials.jsx";
+import SEO from "../components/SEO.jsx";
 // import tours from "../data/tours.json";
 // import posts from "../data/blog.json";
 import tourPackagesData from "../data/tourPackages.json";
@@ -90,18 +93,32 @@ export default function Home() {
     "relative left-1/2 right-1/2 w-screen -translate-x-1/2 px-6 sm:px-10 ";
 
   return (
+    <>
+      <SEO
+        title="Explore Ethiopia"
+        description="Kasopia Tour & Travel designs Ethiopia journeys across Lalibela, Simien Mountains, Danakil Depression, Axum, Omo Valley, and beyond."
+        path="/"
+        keywords={[
+          "Kasopia Tour & Travel",
+          "Ethiopia tours",
+          "Lalibela tours",
+          "Danakil Depression tours",
+          "Simien Mountains tours",
+          "Axum tours",
+        ]}
+      />
     <div className="space-y-24 ">
       <div className={`${fullBleed}`}>
-        <HeroSlider slides={heroSlides} />
+        <HeroSlider slides={heroSlides} titleAs="h2" />
       </div>
 
       <div className={fullBleed}>
         <section className="space-y-8 py-12 animate-fade-in-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
           <div className="text-center space-y-6 max-w-4xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-display text-dusk">
+            <h1 className="text-4xl sm:text-5xl font-display text-dusk">
               {" "}
               <span className="text-blue-700">Kassopia</span> Ethiopia
-            </h2>
+            </h1>
             <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed">
               <p>
                 Welcome to Kassopia Ethiopia, your premier gateway to
@@ -111,16 +128,7 @@ export default function Home() {
                 showcase the diverse landscapes, ancient traditions, and warm
                 hospitality that make Ethiopia truly unique.
               </p>
-              <p>
-                With years of expertise in curating exceptional journeys across
-                this remarkable country, we specialize in crafting personalized
-                tours that take you from the rock-hewn churches of Lalibela to
-                the dramatic landscapes of the Danakil Depression, from the
-                tribal cultures of the Omo Valley to the historic routes of
-                Northern Ethiopia. Our deep local knowledge and extensive
-                network of trusted partners ensure that every moment of your
-                adventure is seamless, authentic, and deeply meaningful.
-              </p>
+              
               <p>
                 At Kassopia Ethiopia, we believe that travel is more than just
                 visiting places—it's about connecting with people, understanding
@@ -158,10 +166,10 @@ export default function Home() {
                   <div className="p-8 pb-6">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div>
-                        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
+                        <p className="text-sm font-semibold uppercase tracking-wider text-blue-200">
                           {category.name}
                         </p>
-                        <p className="mt-2 text-base text-slate-600">
+                        <p className="mt-2 text-base text-slate-900">
                           {popularCategoryDescriptions[category.id]}
                         </p>
                       </div>
@@ -217,28 +225,36 @@ export default function Home() {
       </div>
 
       {Array.isArray(certificate) && certificate.length > 0 ? (
-        <div className={fullBleed}>
-          <section className="space-y-8 py-12">
+        <div className={`${fullBleed} bg-slate-50 py-12`}>
+          <section className="space-y-8 max-w-7xl mx-auto">
             <SectionTitle
               eyebrow="Our Certifications"
               title="Recognized Excellence"
               description="We are proud to be recognized for our commitment to quality and service excellence."
             />
-            <div className="flex flex-wrap justify-center items-center gap-8 py-8">
-              {certificate.map((cert) => (
-                <img
-                  key={cert.id}
-                  src={cert.image_url}
-                  alt={cert.title || "Certificate"}
-                  className="h-32 w-auto rounded-lg shadow-md"
-                />
-              ))}
+            <div className="pt-8">
+              <CertificateSlider certificates={certificate} />
             </div>
           </section>
         </div>
       ) : (
-        <p>Certificates will be displayed here when available</p>
+        <div className="hidden">Certificates will be displayed here when available</div>
       )}
+
+      {/* Testimonials Section */}
+      <div className={`${fullBleed} py-12`}>
+        <section className="space-y-8 max-w-7xl mx-auto">
+          <SectionTitle
+            eyebrow="Guest Stories"
+            title="What Our Travelers Say"
+            description="Read firsthand accounts from our guests who have explored the wonders of Ethiopia with us."
+          />
+          <div className="pt-8">
+            <Testimonials />
+          </div>
+        </section>
+      </div>
     </div>
+    </>
   );
 }

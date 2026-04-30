@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ImagePlus, Award, PenTool, LayoutList, ImageIcon, Settings } from "lucide-react";
+import { ImagePlus, Award, PenTool, LayoutList, ImageIcon, MessageSquareQuote, Settings } from "lucide-react";
 
 const SideBar = () => {
   const links = [
@@ -8,6 +8,7 @@ const SideBar = () => {
     { to: "/admin/add-Blog", label: "Add Blog", icon: PenTool },
     { to: "/admin/Blogs", label: "View Blogs", icon: LayoutList },
     { to: "/admin/Gallery", label: "View Gallery", icon: ImageIcon },
+    { to: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
     { to: "/admin/change-password", label: "Settings", icon: Settings },
   ];
 

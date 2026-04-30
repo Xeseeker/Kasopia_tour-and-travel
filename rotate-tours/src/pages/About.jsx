@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SectionTitle from '../components/SectionTitle.jsx';
+import SEO from '../components/SEO.jsx';
 import logo from '../assets/logo.jpg'
 const whyTravelWithUs = [
   {
@@ -62,6 +63,12 @@ export default function About() {
   const [logoError, setLogoError] = useState(false);
 
   return (
+    <>
+      <SEO
+        title="About Kasopia Tour & Travel"
+        description="Learn about Kasopia Tour & Travel, our Ethiopia travel expertise, local knowledge, and commitment to responsible tourism."
+        path="/about"
+      />
     <div className="space-y-20 max-w-7xl mx-auto px-6 sm:px-10">
       {/* About Us Section */}
       <div className="space-y-8">
@@ -231,5 +238,6 @@ export default function About() {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle.jsx';
 import TourCard from '../components/TourCard.jsx';
 import Button from '../components/Button.jsx';
+import SEO from '../components/SEO.jsx';
 import tours from '../data/tours.json';
 
 export default function CategoryTours() {
@@ -13,7 +14,13 @@ export default function CategoryTours() {
   if (!matchingTours.length) {
     return (
       <div className="space-y-6 text-center">
-        <SectionTitle eyebrow="Journeys" title="Category coming soon" description="We are updating this collection. Choose another or build something bespoke." align="center" />
+        <SectionTitle
+          eyebrow="Journeys"
+          title="Category coming soon"
+          description="We are updating this collection. Choose another or build something bespoke."
+          align="center"
+          titleAs="h1"
+        />
         <Button as={Link} to="/tours" className="mx-auto">
           Back to tours
         </Button>
@@ -22,17 +29,25 @@ export default function CategoryTours() {
   }
 
   return (
-    <div className="space-y-12">
-      <SectionTitle
-        eyebrow="Collection"
+    <>
+      <SEO
         title={`${displayName} Journeys`}
-        description="Carefully paced itineraries curated for this specific travel style."
+        description={`Explore ${displayName} journeys across Ethiopia with Kasopia Tour & Travel.`}
+        path={`/tours/category/${categorySlug}`}
       />
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-        {matchingTours.map((tour) => (
-          <TourCard key={tour.id} tour={tour} />
-        ))}
+      <div className="space-y-12">
+        <SectionTitle
+          eyebrow="Collection"
+          title={`${displayName} Journeys`}
+          description="Carefully paced itineraries curated for this specific travel style."
+          titleAs="h1"
+        />
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {matchingTours.map((tour) => (
+            <TourCard key={tour.id} tour={tour} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

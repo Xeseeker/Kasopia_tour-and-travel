@@ -2,6 +2,7 @@ import { useState } from "react";
 import SectionTitle from "../components/SectionTitle.jsx";
 import Button from "../components/Button.jsx";
 import axios from "axios";
+import SEO from "../components/SEO.jsx";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -71,11 +72,19 @@ export default function Contact() {
   };
 
   return (
+    <>
+      <SEO
+        title="Contact Kasopia Tour & Travel"
+        description="Contact Kasopia Tour & Travel to plan custom Ethiopia tours, request availability, and build a tailored itinerary."
+        path="/contact"
+        keywords={["contact Kasopia", "Ethiopia tour planner", "custom Ethiopia itinerary"]}
+      />
     <div className="space-y-12">
       <SectionTitle
         eyebrow="Contact"
         title="Let's design your Ethiopia journey"
         description="Fill the form and our travel architects will respond within one business day."
+        titleAs="h1"
       />
 
       <div className="grid gap-10 md:grid-cols-2">
@@ -219,5 +228,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   );
 }

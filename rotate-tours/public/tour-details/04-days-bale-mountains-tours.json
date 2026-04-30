@@ -5,5 +5,31 @@
   "sourceFile": "04 Days Bale Mountains Tours.docx",
   "html": "<p><strong>Bale Mountain Tours</strong></p><p><strong>Mode of Transport: Surface and flight</strong></p><p><strong>Duration: 04 Days / 03 Nights</strong></p><p><strong>Day 01: Fly Addis – Goba</strong></p><p>You will be transferred to the airport for your flight to Goba. Be met upon arrival and drive further to Harrena Forest. Overnight: Hotel.</p><p><strong>Day 02: Excursion to Sanetti Plateau and Harrena Forest</strong></p><p>Today you will have an excursion to Sanetti Plateau, the highest plateau in Africa. Here you may encounter the endemics of Ethiopia Wolf. Visit and proceed to Harrena Forest, the second dense forest in Ethiopia. Overnight: Hotel.</p><p><strong>Day 03: Excursion to Sof Omar Cave</strong></p><p>This day we will have an excursion to Sof Omar Cave, the longest cave in Ethiopia and the largest system of caves in Africa, through which the Weib River flows is 15kms long. Enjoy the magnificent nature and drive back to Goba. Overnight: Hotel.</p><p><strong>Day 04: Fly Goba – Addis</strong></p><p>You will be transferred to the airport for your flight back to Addis. Be met upon arrival and transferred to the place where you will be staying for the overnight. Overnight: Hotel.</p><p>\t</p>",
   "text": "Bale Mountain Tours\n\nMode of Transport: Surface and flight\n\nDuration: 04 Days / 03 Nights\n\nDay 01: Fly Addis – Goba\n\nYou will be transferred to the airport for your flight to Goba. Be met upon arrival and drive further to Harrena Forest. Overnight: Hotel.\n\nDay 02: Excursion to Sanetti Plateau and Harrena Forest\n\nToday you will have an excursion to Sanetti Plateau, the highest plateau in Africa. Here you may encounter the endemics of Ethiopia Wolf. Visit and proceed to Harrena Forest, the second dense forest in Ethiopia. Overnight: Hotel.\n\nDay 03: Excursion to Sof Omar Cave\n\nThis day we will have an excursion to Sof Omar Cave, the longest cave in Ethiopia and the largest system of caves in Africa, through which the Weib River flows is 15kms long. Enjoy the magnificent nature and drive back to Goba. Overnight: Hotel.\n\nDay 04: Fly Goba – Addis\n\nYou will be transferred to the airport for your flight back to Addis. Be met upon arrival and transferred to the place where you will be staying for the overnight. Overnight: Hotel.",
-  "generatedAt": "2025-11-26T07:01:44.788Z"
+  "steps": [
+    {
+      "day": 1,
+      "title": "Day 01: Fly Addis – Goba",
+      "description": "You will be transferred to the airport for your flight to Goba. Be met upon arrival and drive further to Harrena Forest. Overnight: Hotel.",
+      "imageUrl": "https://source.unsplash.com/800x600/?Fly%20Addis%20Goba%20Ethiopia"
+    },
+    {
+      "day": 2,
+      "title": "Day 02: Excursion to Sanetti Plateau and Harrena Forest",
+      "description": "Today you will have an excursion to Sanetti Plateau, the highest plateau in Africa. Here you may encounter the endemics of Ethiopia Wolf. Visit and proceed to Harrena Forest, the second dense forest in Ethiopia. Overnight: Hotel.",
+      "imageUrl": "https://source.unsplash.com/800x600/?Excursion%20to%20Sanetti%20Plateau%20and%20Harrena%20Forest%20Ethiopia"
+    },
+    {
+      "day": 3,
+      "title": "Day 03: Excursion to Sof Omar Cave",
+      "description": "This day we will have an excursion to Sof Omar Cave, the longest cave in Ethiopia and the largest system of caves in Africa, through which the Weib River flows is 15kms long. Enjoy the magnificent nature and drive back to Goba. Overnight: Hotel.",
+      "imageUrl": "https://source.unsplash.com/800x600/?Excursion%20to%20Sof%20Omar%20Cave%20Ethiopia"
+    },
+    {
+      "day": 4,
+      "title": "Day 04: Fly Goba – Addis",
+      "description": "You will be transferred to the airport for your flight back to Addis. Be met upon arrival and transferred to the place where you will be staying for the overnight. Overnight: Hotel.",
+      "imageUrl": "https://source.unsplash.com/800x600/?Fly%20Goba%20Addis%20Ethiopia"
+    }
+  ],
+  "generatedAt": "2026-04-25T19:19:07.910Z"
 }

@@ -2,6 +2,7 @@ import { useMemo, useEffect, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle.jsx';
 import Button from '../components/Button.jsx';
+import SEO from '../components/SEO.jsx';
 import tourPackages from '../data/tourPackages.json';
 import tourPackageImages from '../data/tourPackageImages.js';
 import lalibela from '../assets/lalibela.jpg';
@@ -23,6 +24,7 @@ const fallbackCategoryImages = {
 export default function TourPackageDetail() {
   const { categorySlug, tourSlug } = useParams();
   const [detailContent, setDetailContent] = useState({ loading: true, data: null, error: null });
+  const [stepImages, setStepImages] = useState({});
 
   const category = useMemo(
     () => tourPackages.categories.find((cat) => cat.slug === categorySlug),
@@ -60,12 +62,16 @@ export default function TourPackageDetail() {
   }, [tour]);
 
   const itinerarySteps = useMemo(() => {
+    if (Array.isArray(detailContent.data?.steps) && detailContent.data.steps.length > 0) {
+      return detailContent.data.steps;
+    }
+
     if (!detailContent.data?.text) return [];
     return parseItinerary(detailContent.data.text);
   }, [detailContent.data]);
 
   const heroImage = useMemo(() => {
-    if (!tour) return 'https://source.unsplash.com/1600x900/?ethiopia';
+    if (!tour) return addis;
 
     const mappedImage = tourPackageImages[tour.slug];
     if (mappedImage) return mappedImage;
@@ -73,8 +79,39 @@ export default function TourPackageDetail() {
     const fallbackImage = fallbackCategoryImages[category?.id];
     if (fallbackImage) return fallbackImage;
 
-    return `https://source.unsplash.com/1600x900/?ethiopia,${tour.slug}`;
+    return addis;
   }, [tour, category]);
+
+  useEffect(() => {
+    if (!itinerarySteps.length) {
+      setStepImages({});
+      return;
+    }
+
+    let isMounted = true;
+
+    const loadStepImages = async () => {
+      const resolvedEntries = await Promise.all(
+        itinerarySteps.map(async (step, index) => {
+          const cacheKey = `${step.day || index + 1}-${step.title}`;
+          const image = await resolveStepImage(step, tour, category, heroImage);
+          return [cacheKey, image];
+        }),
+      );
+
+      if (!isMounted) {
+        return;
+      }
+
+      setStepImages(Object.fromEntries(resolvedEntries));
+    };
+
+    loadStepImages();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [itinerarySteps, tour, category, heroImage]);
 
   if (!category || !tour) {
     return (
@@ -93,6 +130,16 @@ export default function TourPackageDetail() {
   }
 
   return (
+    <>
+      <SEO
+        title={tour.title}
+        description={
+          detailContent.data?.text?.slice(0, 155) ||
+          `${tour.title} itinerary, trip steps, and route planning for Ethiopia with Kasopia Tour & Travel.`
+        }
+        path={`/tour-packages/${category.slug}/${tour.slug}`}
+        keywords={[tour.title, category.name, 'Ethiopia tour package', 'Kasopia Tour & Travel']}
+      />
     <div className="space-y-12">
       <div className="space-y-6">
         <p className="text-sm font-semibold uppercase tracking-wider text-brand-500">{category.name}</p>
@@ -114,7 +161,7 @@ export default function TourPackageDetail() {
       </div>
 
       <div className="overflow-hidden rounded-3xl shadow-lg">
-        <img src={heroImage} alt={tour.title} className="h-[420px] w-full object-cover" loading="lazy" />
+        <img src={heroImage} alt={tour.title} className="h-[420px] w-full object-cover" fetchPriority="high" />
       </div>
 
       {detailContent.loading && <p className="text-center text-slate-500">Loading itinerary...</p>}
@@ -131,6 +178,7 @@ export default function TourPackageDetail() {
               eyebrow="Itinerary"
               title="Trip steps"
               description="Each day is carefully curated. Review the key highlights below or download the full document."
+              titleAs="h2"
             />
             <div className="space-y-8">
               {itinerarySteps.map((step, index) => (
@@ -140,7 +188,10 @@ export default function TourPackageDetail() {
                 >
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src={`https://source.unsplash.com/800x600/?ethiopia,${tour.slug},day-${index + 1}`}
+                      src={
+                        stepImages[`${step.day || index + 1}-${step.title}`] ||
+                        heroImage
+                      }
                       alt={step.title}
                       className="h-40 w-full object-cover"
                       loading="lazy"
@@ -186,6 +237,7 @@ export default function TourPackageDetail() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
@@ -231,6 +283,118 @@ function capitalize(text) {
 function getDestinationName(title = '') {
   const tokens = title.split('–')[0] || title.split('-')[0] || title;
   return tokens.trim();
+}
+
+const wikipediaImageCache = new Map();
+
+const placeImageMap = [
+  { aliases: ['addis ababa', 'addis abeba', 'bole'], pageTitle: 'Addis Ababa' },
+  { aliases: ['entoto'], pageTitle: 'Entoto' },
+  { aliases: ['trinity cathedral', 'holy trinity'], pageTitle: 'Holy Trinity Cathedral, Addis Ababa' },
+  { aliases: ['mercato', 'merkato'], pageTitle: 'Mercato' },
+  { aliases: ['adadi maryam'], pageTitle: 'Adadi Maryam' },
+  { aliases: ['tiya', 'tiya stele', 'tiya stelae'], pageTitle: 'Tiya (archaeological site)' },
+  { aliases: ['debre libanos', 'debrelibanos'], pageTitle: 'Debre Libanos' },
+  { aliases: ['wenchi', 'wenchi crater lake'], pageTitle: 'Wonchi' },
+  { aliases: ['menagesha', 'suba forest'], pageTitle: 'Menagesha Suba Forest' },
+  { aliases: ['debre zeit', 'bishoftu'], pageTitle: 'Bishoftu' },
+  { aliases: ['awash'], pageTitle: 'Awash National Park' },
+  { aliases: ['bahir dar', 'bahirdar'], pageTitle: 'Bahir Dar' },
+  { aliases: ['lake tana', 'zeghe'], pageTitle: 'Lake Tana' },
+  { aliases: ['blue nile falls', 'tisisat', 'tis isat'], pageTitle: 'Blue Nile Falls' },
+  { aliases: ['gondar', 'gonder'], pageTitle: 'Gondar' },
+  { aliases: ['lalibela'], pageTitle: 'Lalibela' },
+  { aliases: ['axum', 'aksum'], pageTitle: 'Axum' },
+  { aliases: ['simien', 'semen', 'ras dashen'], pageTitle: 'Simien Mountains' },
+  { aliases: ['harar', 'harer', 'jugol'], pageTitle: 'Harar' },
+  { aliases: ['bale'], pageTitle: 'Bale Mountains National Park' },
+  { aliases: ['danakil', 'dallol'], pageTitle: 'Danakil Depression' },
+  { aliases: ['erta ale'], pageTitle: 'Erta Ale' },
+  { aliases: ['mekele', 'meqele'], pageTitle: 'Mekelle' },
+  { aliases: ['tigray'], pageTitle: 'Tigray Region' },
+  { aliases: ['arbaminch', 'arba minch', 'arbamich'], pageTitle: 'Arba Minch' },
+  { aliases: ['lake chamo'], pageTitle: 'Lake Chamo' },
+  { aliases: ['chencha'], pageTitle: 'Chencha' },
+  { aliases: ['dorze'], pageTitle: 'Dorze people' },
+  { aliases: ['jinka'], pageTitle: 'Jinka' },
+  { aliases: ['mursi'], pageTitle: 'Mursi people' },
+  { aliases: ['mago'], pageTitle: 'Mago National Park' },
+  { aliases: ['turmi'], pageTitle: 'Turmi' },
+  { aliases: ['keyafer', 'keyafar', 'kayafer'], pageTitle: 'Key Afer' },
+  { aliases: ['dimeka'], pageTitle: 'Dimeka' },
+  { aliases: ['karo', 'kara'], pageTitle: 'Karo people (Ethiopia)' },
+  { aliases: ['hamar', 'hammar', 'hammer people'], pageTitle: 'Hamer people' },
+  { aliases: ['ari village', 'ari villages', 'ari tribe'], pageTitle: 'Aari people' },
+  { aliases: ['nyangatom'], pageTitle: 'Nyangatom people' },
+  { aliases: ['dassanech', 'dasenech'], pageTitle: 'Daasanach people' },
+  { aliases: ['konso'], pageTitle: 'Konso people' },
+  { aliases: ['ziway', 'lake ziway'], pageTitle: 'Lake Zway' },
+];
+
+async function resolveStepImage(step, tour, category, fallbackImage) {
+  const match = getStepImageMatch(step, tour, category);
+
+  if (!match.pageTitle) {
+    return fallbackImage;
+  }
+
+  const cacheKey = match.pageTitle;
+  if (wikipediaImageCache.has(cacheKey)) {
+    return wikipediaImageCache.get(cacheKey);
+  }
+
+  try {
+    const response = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(match.pageTitle)}`,
+    );
+
+    if (!response.ok) {
+      wikipediaImageCache.set(cacheKey, fallbackImage);
+      return fallbackImage;
+    }
+
+    const data = await response.json();
+    const imageUrl =
+      data.originalimage?.source ||
+      data.thumbnail?.source ||
+      fallbackImage;
+
+    wikipediaImageCache.set(cacheKey, imageUrl);
+    return imageUrl;
+  } catch {
+    wikipediaImageCache.set(cacheKey, fallbackImage);
+    return fallbackImage;
+  }
+}
+
+function getStepImageMatch(step, tour, category) {
+  const searchableText = `${step.title} ${step.description}`.toLowerCase();
+
+  for (const place of placeImageMap) {
+    if (place.aliases.some((alias) => searchableText.includes(alias))) {
+      return place;
+    }
+  }
+
+  const cleanedTitle = step.title
+    .replace(/^day\s*\d+\s*:?/i, '')
+    .replace(/[()]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (cleanedTitle) {
+    const pageTitle = cleanedTitle
+      .split(/[-–,/]/)
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .find(Boolean);
+
+    if (pageTitle) {
+      return { pageTitle };
+    }
+  }
+
+  return { pageTitle: `${tour.title} ${category?.name || 'Ethiopia'}` };
 }
 
 function BookingForm({ selectedTour }) {

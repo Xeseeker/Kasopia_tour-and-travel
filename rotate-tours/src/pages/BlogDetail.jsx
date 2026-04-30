@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle.jsx";
 import Button from "../components/Button.jsx";
 import { useLocation } from "react-router-dom";
+import SEO from "../components/SEO.jsx";
 //import posts from "../data/blog.json";
 
 export default function BlogDetail() {
@@ -26,18 +27,26 @@ export default function BlogDetail() {
   }
 
   return (
+    <>
+      <SEO
+        title={post.title}
+        description={post.description}
+        path={`/blog/${post.id}`}
+      />
     <article className="space-y-8">
       <div className="h-96 w-full rounded-[32px] bg-slate-100 relative overflow-hidden flex items-center justify-center p-2">
         <img
           src={post.image_url}
           alt={post.title}
           className="max-h-full w-auto object-contain rounded-2xl shadow-sm"
+          loading="lazy"
         />
       </div>
-      <SectionTitle eyebrow="Journal" title={post.title} />
+      <SectionTitle eyebrow="Journal" title={post.title} titleAs="h1" />
       <p className="text-lg leading-relaxed text-slate-700">
         {post.description}
       </p>
     </article>
+    </>
   );
 }

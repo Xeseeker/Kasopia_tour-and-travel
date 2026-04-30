@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import Button from './Button.jsx';
 
-export default function HeroSlider({ slides = [] }) {
+export default function HeroSlider({ slides = [], titleAs: TitleTag = 'h2' }) {
   return (
     <div className="relative text-white">
       <Swiper
@@ -30,17 +30,25 @@ export default function HeroSlider({ slides = [] }) {
         slidesPerView="auto"
         className="h-[520px] sm:h-[580px] xl:h-[640px]"
       >
-        {slides.map((slide) => (
+        {slides.map((slide, index) => (
           <SwiperSlide key={slide.title} className="!flex !h-auto w-full max-w-[1100px]">
             <Link
               to={slide.packageLink || slide.primaryCta?.to || '#'}
               className="group relative block h-full w-full overflow-hidden rounded-[20px] bg-hero-gradient shadow-soft"
             >
-              <img src={slide.image} alt={slide.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+              />
               <div className="relative z-10 flex h-full flex-col justify-center px-6 py-10 sm:px-14 max-w-3xl">
                 <div className="glass-panel p-8 sm:p-12 rounded-3xl animate-fade-in-up">
                   <p className="text-xs font-bold uppercase tracking-widest text-[#e2e8f0] opacity-90">{slide.eyebrow}</p>
-                  <h1 className="mt-4 text-4xl sm:text-5xl xl:text-6xl font-display leading-tight text-white drop-shadow-md">{slide.title}</h1>
+                  <TitleTag className="mt-4 text-4xl sm:text-5xl xl:text-6xl font-display leading-tight text-white drop-shadow-md">
+                    {slide.title}
+                  </TitleTag>
                   <p className="mt-5 text-base sm:text-lg text-white/90 drop-shadow-sm font-medium">{slide.copy}</p>
                   <div className="mt-8 flex flex-wrap gap-4">
                   {slide.primaryCta && (

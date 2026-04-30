@@ -7,8 +7,6 @@ const footerLinks = [
     title: 'Journeys',
     links: [
       { label: 'All Tours', to: '/tours' },
-      { label: 'Adventure', to: '/tours/category/adventure' },
-      { label: 'Culture', to: '/tours/category/culture' },
       { label: 'Bespoke', to: '/contact' },
     ],
   },

@@ -4,6 +4,7 @@ import SectionTitle from '../components/SectionTitle.jsx';
 import TourPackageCard from '../components/TourPackageCard.jsx';
 import Button from '../components/Button.jsx';
 import tourPackagesData from '../data/tourPackages.json';
+import SEO from '../components/SEO.jsx';
 
 export default function Tours() {
   const filters = useMemo(
@@ -31,11 +32,19 @@ export default function Tours() {
     activeCategory === 'All' ? allTours : allTours.filter((tour) => tour.category.slug === activeCategory);
 
   return (
+    <>
+      <SEO
+        title="Ethiopia Tours"
+        description="Browse Kasopia Tour & Travel itineraries across Lalibela, Danakil, Axum, Omo Valley, Bale Mountains, and more Ethiopia destinations."
+        path="/tours"
+        keywords={['Ethiopia tours', 'Kasopia Tour & Travel', 'tour packages Ethiopia']}
+      />
     <div className="space-y-12">
       <SectionTitle
         eyebrow="All Tours"
         title="Every Kasopia tour itinerary"
         description="Browse every itinerary from all folders—each with its cover image. Choose a category to narrow down, then open for details and downloads."
+        titleAs="h1"
       />
 
       <div className="flex flex-wrap gap-3">
@@ -66,5 +75,6 @@ export default function Tours() {
         </Button>
       </div>
     </div>
+    </>
   );
 }
